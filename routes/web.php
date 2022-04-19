@@ -14,11 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+//   Cache::put("variable","Value Of The variable");
+//   dd(cache()->get("variable"));
+     return view('welcome');
 });
-Route::get('/test-one', function () {
-    app()->make('first_service');
-});
+// Route::match(['get','post'],'/about', function () {  //same as get method
+//          return view('about');
+//     });
+
+Route::view('/about','about'); //without calling a function
+Route::get('/contact', function () {
+             return view('contact');
+        })->name("contact.us");  //if name route is being used the /contact can be anything...like- abbbbcddala this value will go with then route..
+// Route::get('/test-one', function () {
+//     app()->make('first_service');
+// });
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
