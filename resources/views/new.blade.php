@@ -1,0 +1,1 @@
+we got {{ $number["a"] }};
