@@ -21,9 +21,12 @@ Route::get('/', function () {
 // Route::match(['get','post'],'/about', function () {  //same as get method
 //          return view('about');
 //     });
+Route::get('/country', function(){
+ return view("country");
+})->middleware("country");
 
 Route::view('/about','about'); //without calling a function
-Route::get('/contact', function () {
+Route::get(md5('/contact'), function () {
              return view('contact');
         })->name("contact.us");  //if name route is being used the /contact can be anything...like- abbbbcddala this value will go with then route..
 // Route::get('/test-one', function () {
