@@ -11,4 +11,8 @@ class contactController extends Controller
     {
         return view("/contact");
     }
+    public function about()
+    {
+        return view("/contact");
+    }
 }
