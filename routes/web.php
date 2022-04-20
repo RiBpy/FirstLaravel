@@ -14,24 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-//   Cache::put("variable","Value Of The variable");
-//   dd(cache()->get("variable"));
+
      return view('welcome');
 });
-// Route::match(['get','post'],'/about', function () {  //same as get method
-//          return view('about');
-//     });
+
 Route::get('/country', function(){
  return view("country");
 })->middleware("country");
 
+//controller_laravel_8
+Route::get('/contact',[contactController::class,"index"])->name('contact.us'); //here "index" can be anything ..but good practice is using index while going any page.when submitting form "post" when editing form "edit" when deleting data "destroy" .
 Route::view('/about','about'); //without calling a function
 Route::get(md5('/contact'), function () {
              return view('contact');
         })->name("contact.us");  //if name route is being used the /contact can be anything...like- abbbbcddala this value will go with then route..
-// Route::get('/test-one', function () {
-//     app()->make('first_service');
-// });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
