@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\contactController;
 use App\Http\Controllers\invokController;
+use App\Http\Controllers\secondController;
+
 
 
 /*
@@ -26,6 +28,7 @@ Route::get('/contact',[contactController::class,"index"])->name('contact.us'); /
 Route::get('/about',[contactController::class,"about"])->name('about.us');
 Route::post('/about_store',[contactController::class,"aboutStore"])->name('about.store');
 Route::post('/contact_store',[contactController::class,"contactStore"])->name('contact.store');
+Route::get('/redirected',[secondController::class,"red"]);
 
 //middleware using controller.//
 Route::get('/country',[contactController::class,"countryController"])->name('country.us')->middleware("country");
