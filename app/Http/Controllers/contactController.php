@@ -13,6 +13,18 @@ class contactController extends Controller
     }
     public function about()
     {
-        return view("/contact");
+        return view("/about");
+    }
+    public function aboutStore(Request $request)
+    {
+         dd($request->all());
+    }
+    public function contactStore(Request $request)
+    {
+         dd($request->all());
+    }
+    public function countryController()
+    {
+        return view("/country");
     }
 }

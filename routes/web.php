@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\contactController;
+use App\Http\Controllers\invokController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,13 +20,20 @@ Route::get('/', function () {
      return view('welcome');
 });
 
-Route::get('/country', function(){
- return view("country");
-})->middleware("country");
 
-//controller_laravel_8
+//..controller_laravel_8..//
 Route::get('/contact',[contactController::class,"index"])->name('contact.us'); //here "index" can be anything ..but good practice is using index while going any page.when submitting form "post" when editing form "edit" when deleting data "destroy" .
 Route::get('/about',[contactController::class,"about"])->name('about.us');
+Route::post('/about_store',[contactController::class,"aboutStore"])->name('about.store');
+Route::post('/contact_store',[contactController::class,"contactStore"])->name('contact.store');
+
+//middleware using controller.//
+Route::get('/country',[contactController::class,"countryController"])->name('country.us')->middleware("country");
+
+// //invoke method//
+// Route::get("/invoke",[invokController::class,'__invoke']);
+// Route::get("/hello",[invokController::class,'hello']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
