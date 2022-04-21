@@ -1,6 +1,8 @@
 <div>
     <h1>Hello From About Page</h1>
 </div>
+
+
 <form action="{{route('about.store')}}" method="post">
     @csrf
     <input type="text" name="name" placeholder="Your Name"><br>

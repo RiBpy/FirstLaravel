@@ -31,7 +31,10 @@ class contactController extends Controller
        $data=array();
        $data["name"]=$request->name;
        $data["email"]=$request->email;
-       return redirect()->action([secondController::class,'red']);
+       //return redirect()->back()->with('success', 'Data Inserted!');
+       return redirect("/contact")->with('success', 'Data Inserted!');
+       //return $data;
+    //    return redirect()->action([secondController::class,'red']);
 
 
     }
