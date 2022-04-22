@@ -20,7 +20,11 @@ class contactController extends Controller
     // aboutStore method used for accessing form data..
     public function aboutStore(Request $request)
     {
-         dd($request->all());
+        $validated = $request->validate([
+            'name' => 'required|max:55',
+            'email' => 'required|max:55',
+            'password' => 'required|min:6|max:15',
+        ]);
     }
     public function contactStore(Request $request)
     {
