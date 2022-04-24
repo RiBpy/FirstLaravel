@@ -15,22 +15,27 @@ class contactController extends Controller
     //about method
     public function about()
     {
+
         return view("/about");
     }
+
     // aboutStore method used for accessing form data..
     public function aboutStore(Request $request)
     {
+        $data["name"]=$request->name;
         $validated = $request->validate([
             'name' => 'required|max:55',
             'email' => 'required|max:55',
             'password' => 'required|min:6|max:15',
         ]);
+        \Log::channel('aboutStore')->info("Submitted By:" .$data["name"]);
+        return redirect()->back();
+
     }
     public function contactStore(Request $request)
     {
         //  dd($request->email);
         // dd($request ->ip());
-    // dd($request->header('X-Header-Name'));
        // dd($request ->collect());
        $data=array();
        $data["name"]=$request->name;

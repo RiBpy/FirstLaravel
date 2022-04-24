@@ -28,14 +28,26 @@ Route::get('/contact',[contactController::class,"index"])->name('contact.us'); /
 Route::get('/about',[contactController::class,"about"])->name('about.us');
 Route::post('/about_store',[contactController::class,"aboutStore"])->name('about.store');
 Route::post('/contact_store',[contactController::class,"contactStore"])->name('contact.store');
-Route::get('/redirected',[secondController::class,"red"]);
+
+Route::get('/test',function(Request $request){
+   $logfile=file(storage_path().'/logs/about.log');
+   $collection=[];
+   foreach($logfile as  $line_number => $line){
+      $collection[]=array("content"=>htmlspecialchars($line));
+   }
+   dd($collection);
+
+// Log::info("This is a test log".rand(1,30));
+// return redirect()->to('/');
+
+});
 
 //middleware using controller.//
 Route::get('/country',[contactController::class,"countryController"])->name('country.us')->middleware("country");
 
 // //invoke method//
 // Route::get("/invoke",[invokController::class,'__invoke']);
-// Route::get("/hello",[invokController::class,'hello']);
+Route::get("/hello",[invokController::class,'hello'])->middleware("auth");
 
 
 Route::get('/dashboard', function () {
